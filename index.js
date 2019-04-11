@@ -121,7 +121,10 @@ const ScrollableTabView = createReactClass({
   },
 
   _keyExists(sceneKeys, key) {
-    return sceneKeys.find((sceneKey) => key === sceneKey);
+    if (Array.isArray(sceneKeys)) {
+        return sceneKeys.find((sceneKey) => key === sceneKey);
+    }
+    return false;
   },
 
   _makeSceneKey(child, idx) {
